@@ -125,7 +125,7 @@ function onReady() {
   videoElem.width  = canvasElem.width  = width;
   videoElem.height = canvasElem.height = height;
   // Start Video Capture
-  videoCapture = new cv.VideoCapture(video);
+  videoCapture = new cv.VideoCapture(videoElem);
   // Load XML File With XHR
   const utils = new Utils('error-message');  // Set Element ID
   utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
@@ -183,8 +183,8 @@ function onStart() {
 function onStop() {
   console.log('On Stop');
   
-  video.pause();
-  video.srcObject = null;
+  videoElem.pause();
+  videoElem.srcObject = null;
   stream.getVideoTracks()[0].stop();
   
   isStreaming = false;
