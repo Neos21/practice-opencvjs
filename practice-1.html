@@ -114,7 +114,7 @@ function onReady() {
   videoElem.width  = canvasElem.width  = width;
   videoElem.height = canvasElem.height = height;
   // Start Video Capture
-  videoCapture = new cv.VideoCapture(video);
+  videoCapture = new cv.VideoCapture(videoElem);
   // Set Button Events
   startButtonElem.addEventListener('click', onStart);
   startButtonElem.disabled = false;
@@ -162,8 +162,8 @@ function onStart() {
 function onStop() {
   console.log('On Stop');
   
-  video.pause();
-  video.srcObject = null;
+  videoElem.pause();
+  videoElem.srcObject = null;
   stream.getVideoTracks()[0].stop();
   
   isStreaming = false;
